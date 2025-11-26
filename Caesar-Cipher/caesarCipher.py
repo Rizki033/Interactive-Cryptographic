@@ -58,6 +58,18 @@ def run_with_measurements(func, *args, **kwargs):
   }
   return result, metrics
   
+# GUI
+class CaesarGUI:
+    def __init__(self, root):
+      self.root = root
+      root.title("Caesar Cipher GUI")
+      
+      # Top frame : inputs 
+      frm_top = ttk.Frame(root, padding=8)
+      frm_top.pack(fill='x')
+      
+      ttk.Label(frm_top, text="Message:").grid(row=0, column=0, sticky='w')
+      
   
     
 
