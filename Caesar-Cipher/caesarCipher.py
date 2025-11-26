@@ -19,5 +19,8 @@ def caesar_cipher (text: str, shift: int) -> str:
     else:
       result_chars.append(ch)
   return ''.join(result_chars)
+# decrypt function by applying negative shift
+def caesar_decrypt(text: str, shift: int) -> str:
+  return caesar_cipher(text, (-shift)%len(SYMBOLS))
 
 
