@@ -44,4 +44,5 @@ def run_with_measurements(func, *args, **kwargs):
     tracemalloc.stop()
     
   wall_elapsed = t1_wall - t0_wall
+  tracemalloc.stop()
 
