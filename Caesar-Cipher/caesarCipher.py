@@ -44,5 +44,20 @@ def run_with_measurements(func, *args, **kwargs):
     tracemalloc.stop()
     
   wall_elapsed = t1_wall - t0_wall
-  tracemalloc.stop()
+  proc_time_delta = t1_proc_times - t0_proc_times
+  cpu_percent_approx = (proc_time_delta / wall_elapsed * 100.0) if wall_elapsed > 0 else 0.0
+  rss_bytes = process.memory_info().rss
+  
+  metrics = {
+        'wall_seconds': wall_elapsed,
+        'proc_seconds': proc_time_delta,
+        'cpu_percent_approx': cpu_percent_approx,
+        'py_alloc_current_bytes': current,
+        'py_alloc_peak_bytes': peak,
+        'process_rss_bytes': rss_bytes,
+  }
+  return result, metrics
+  
+  
+    
 
