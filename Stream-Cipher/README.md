@@ -24,4 +24,4 @@ The application also features **interactive performance graphs** using Matplotli
 ![image alt](https://github.com/Rizki033/Cryptography-scripting/blob/cb4fd9390892ca993ef57a4b0f10408418e3717d/Symmetric-Encryption/Stream-Cipher/image.png)
 
 
-N'hésite pas à demander des améliorations ou d'autres fichiers 
+Feel free to request improvements or additional files.
