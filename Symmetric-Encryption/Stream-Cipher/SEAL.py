@@ -1,0 +1,1 @@
+# SEAL = Software-Optimized Encryption Algorithm
