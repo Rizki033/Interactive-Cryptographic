@@ -1,4 +1,3 @@
-# block_cipher_modes.py
 from typing import Callable
 from Crypto.Util.Padding import pad, unpad
 
@@ -11,6 +10,7 @@ def pkcs7_unpad(data: bytes, block_size: int) -> bytes:
 # -------------------------
 # ECB Mode
 # -------------------------
+
 def encrypt_ecb(block_encrypt: Callable[[bytes], bytes], block_size: int, plaintext: bytes) -> bytes:
     data = pkcs7_pad(plaintext, block_size)
     return b"".join(block_encrypt(data[i:i+block_size]) for i in range(0, len(data), block_size))
@@ -48,6 +48,7 @@ def decrypt_cbc(block_decrypt: Callable[[bytes], bytes], block_size: int, cipher
 # -------------------------
 # CFB Mode
 # -------------------------
+
 def encrypt_cfb(block_encrypt: Callable[[bytes], bytes], block_size: int, plaintext: bytes, iv: bytes) -> bytes:
     ciphertext = b""
     prev_block = iv
