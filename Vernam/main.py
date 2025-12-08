@@ -6,6 +6,7 @@ import os
 # --------------
 # Core functions
 # --------------
+
 def generate_key(length: int) -> bytes:
     """
     Generate a cryptographically-random key of `length` bytes.
