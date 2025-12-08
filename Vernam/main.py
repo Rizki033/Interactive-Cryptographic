@@ -3,9 +3,9 @@ from secrets import token_bytes
 from typing import Tuple
 import os
 
-# -------------------------
+# --------------
 # Core functions
-# -------------------------
+# --------------
 def generate_key(length: int) -> bytes:
     """
     Generate a cryptographically-random key of `length` bytes.
