@@ -147,8 +147,6 @@ def example():
     print("Recovered second plaintext by attacker (if key reused):", leaked_pt2)
     print("If key reused, security is broken! Do NOT reuse keys.\n")
 
-# -------------------------
-# Run example if module executed
-# -------------------------
+
 if __name__ == "__main__":
     example()
