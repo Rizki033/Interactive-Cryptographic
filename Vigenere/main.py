@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-"""
-Vigenere Cipher (Classic Implementation)
-- Works on A–Z only
-- Removes spaces and converts to uppercase
-- Repeats keyword automatically
-- Includes encrypt() and decrypt()
-"""
-
 def clean_text(txt: str) -> str:
     """
     Keep only alphabetic letters, convert to uppercase.
@@ -55,7 +47,7 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
 
 
 # -----------------------
-# Example from your text
+# Example 
 # -----------------------
 def example():
     keyword = "RELATIONS"
