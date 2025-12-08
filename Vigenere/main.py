@@ -46,9 +46,9 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     return "".join(plaintext)
 
 
-# -----------------------
+# -------
 # Example 
-# -----------------------
+# -------
 def example():
     keyword = "RELATIONS"
     plaintext = "TO BE OR NOT TO BE THAT IS THE QUESTION"

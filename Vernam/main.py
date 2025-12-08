@@ -1,17 +1,4 @@
 #!/usr/bin/env python3
-"""
-vernam_otp.py
-Simple implementation of Vernam cipher / One-Time Pad (OTP) in Python.
-
-Functions:
-- generate_key(length) -> bytes
-- encrypt(plaintext_bytes, key_bytes) -> ciphertext_bytes
-- decrypt(ciphertext_bytes, key_bytes) -> plaintext_bytes
-
-Also includes utilities to operate on UTF-8 strings and files, and an example
-showing encryption/decryption and a known-plaintext attack (recover key).
-"""
-
 from secrets import token_bytes
 from typing import Tuple
 import os
@@ -104,9 +91,9 @@ def to_hex(b: bytes) -> str:
 def to_bin_string(b: bytes) -> str:
     return ''.join(f'{byte:08b}' for byte in b)
 
-# -------------------------
-# Example usage
-# -------------------------
+# --------
+# Example 
+# --------
 def example():
     print("=== Vernam / One-Time-Pad example ===\n")
 
