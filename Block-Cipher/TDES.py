@@ -51,7 +51,7 @@ class TripleDESInterface:
         ttk.Label(input_frame, text="Texte clair:").grid(row=3, column=0, sticky="nw")
         self.text_input = scrolledtext.ScrolledText(input_frame, width=60, height=6, wrap="word")
         self.text_input.grid(row=3, column=1, pady=5)
-        self.text_input.insert("1.0", "Bonjour ! Ceci est un message secret protégé par Triple DES.")
+        self.text_input.insert("1.0", "Hello This is my secret message.")
 
         # Mode buttons
         button_frame = ttk.Frame(main_frame)
