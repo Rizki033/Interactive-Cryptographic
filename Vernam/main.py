@@ -95,9 +95,32 @@ def to_bin_string(b: bytes) -> str:
     return ''.join(f'{byte:08b}' for byte in b)
 
 # --------
+# ASCII Art
+# --------
+def print_vernam_header():
+    """
+    Print a stylish ASCII art header for Vernam / One-Time-Pad cipher.
+    """
+    header = r"""
+ /$$    /$$ /$$$$$$$$ /$$$$$$$  /$$      /$$  /$$$$$$  /$$   /$$
+| $$   | $$| $$_____/| $$__  $$| $$$    /$$$ /$$__  $$| $$$ | $$
+| $$   | $$| $$      | $$  \ $$| $$$$  /$$$$| $$  \ $$| $$$$| $$
+|  $$ / $$/| $$$$$   | $$$$$$$/| $$ $$/$$ $$| $$$$$$$$| $$ $$ $$
+ \  $$ $$/ | $$__/   | $$__  $$| $$  $$$| $$| $$__  $$| $$  $$$$
+  \  $$$/  | $$      | $$  \ $$| $$\  $ | $$| $$  | $$| $$\  $$$
+   \  $/   | $$$$$$$$| $$  | $$| $$ \/  | $$| $$  | $$| $$ \  $$
+    \_/    |________/|__/  |__/|__/     |__/|__/  |__/|__/  \__/
+                                                                
+                                                                                                            """
+    print(header)
+
+
+# --------
 # Example 
 # --------
 def example():
+    print_vernam_header()
+    
     print("=== Vernam / One-Time-Pad example ===\n")
 
     message = "HELLO OTP"  # example plaintext

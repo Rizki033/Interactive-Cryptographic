@@ -47,10 +47,30 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
 
 
 # -------
+# ASCII Art
+# -------
+def print_vigenere_header():
+    """
+    Print a stylish ASCII art header for Vigenere cipher.
+    """
+    header = r"""
+____   ____.__                                           
+\   \ /   /|__| ____   ____   ____   ___________   ____  
+ \   Y   / |  |/ ___\_/ __ \ /    \_/ __ \_  __ \_/ __ \ 
+  \     /  |  / /_/  >  ___/|   |  \  ___/|  | \/\  ___/ 
+   \___/   |__\___  / \___  >___|  /\___  >__|    \___  >
+             /_____/      \/     \/     \/            \/ 
+    """
+    print(header)
+
+
+# -------
 # Example 
 # -------
 
 def example():
+    print_vigenere_header()
+    
     keyword = "RELATIONS"
     plaintext = "TO BE OR NOT TO BE THAT IS THE QUESTION"
 
