@@ -13,9 +13,9 @@ from matplotlib.figure import Figure
 MOD = 26
 ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-# -------------------------
-# Matrix / Hill utilities
-# -------------------------
+# -------
+# Matrix 
+# -------
 def _clean_letters(s: str) -> str:
     return "".join([c for c in s.upper() if c.isalpha()])
 
@@ -161,12 +161,12 @@ class HillGUI:
         input_frame = ttk.LabelFrame(main, text="Input", padding=10)
         input_frame.grid(row=0, column=0, columnspan=2, sticky="ew", pady=5)
 
-        ttk.Label(input_frame, text="Key (letters, length = perfect square):").grid(row=0, column=0, sticky="w")
+        ttk.Label(input_frame, text="Key :").grid(row=0, column=0, sticky="w")
         self.key_entry = ttk.Entry(input_frame, width=60)
         self.key_entry.grid(row=0, column=1, pady=5)
         self.key_entry.insert(0, "GYBNQKURP")  # default 3x3
 
-        ttk.Label(input_frame, text="Text (letters only):").grid(row=1, column=0, sticky="nw")
+        ttk.Label(input_frame, text="Text :").grid(row=1, column=0, sticky="nw")
         self.text_input = scrolledtext.ScrolledText(input_frame, width=60, height=5, wrap="word")
         self.text_input.grid(row=1, column=1, pady=5)
         self.text_input.insert("1.0", "ACT")
@@ -230,7 +230,7 @@ class HillGUI:
             key_text = self.key_entry.get().strip()
             plain_raw = self.text_input.get("1.0","end").strip()
             if not key_text:
-                raise ValueError("Enter a key (letters).")
+                raise ValueError("Enter a key .")
             clean_plain = _clean_letters(plain_raw)
             if len(clean_plain) == 0:
                 raise ValueError("Plaintext must contain at least one letter A-Z.")
@@ -240,13 +240,13 @@ class HillGUI:
                 inv = matrix_inverse_mod26(mat)
             except Exception as e:
                 # still allow encryption but warn (decryption would fail)
-                messagebox.showwarning("Warning", f"Key matrix not invertible (decryption will fail): {e}")
+                messagebox.showwarning("Warning", f"Key matrix not invertible decryption will fail: {e}")
                 inv = None
             # perform encryption
             ciphertext = self.measure(lambda: hill_encrypt_blocks(mat, clean_plain), "Encrypt Hill")
             # show
             self.result_output.delete("1.0","end")
-            self.result_output.insert("1.0", f"Ciphertext (letters): {ciphertext}")
+            self.result_output.insert("1.0", f"Ciphertext : {ciphertext}")
             # store last for optional use
             self._last_cipher = ciphertext
             self._last_inv = inv
@@ -258,19 +258,18 @@ class HillGUI:
         try:
             key_text = self.key_entry.get().strip()
             if not key_text:
-                raise ValueError("Enter a key (letters).")
+                raise ValueError("Enter a key .")
             mat, n = parse_key_matrix(key_text)
-            inv = matrix_inverse_mod26(mat)  # will raise if not invertible
-            # determine ciphertext: either from result box or ask user to paste
-            # we'll try to read from result box first
+            inv = matrix_inverse_mod26(mat)  
+           
             current = self.result_output.get("1.0","end").strip()
             # if user previously encrypted, try to extract ciphertext letters, else ask error
             if current:
-                # try to find "Ciphertext (letters): ..." line
-                if "Ciphertext (letters):" in current:
-                    cipher_letters = current.split("Ciphertext (letters):",1)[1].splitlines()[0].strip()
+
+                if "Ciphertext :" in current:
+                    cipher_letters = current.split("Ciphertext :",1)[1].splitlines()[0].strip()
                 else:
-                    # otherwise assume entire content is ciphertext letters
+                    
                     cipher_letters = _clean_letters(current)
             else:
                 raise ValueError("No ciphertext found in result box; paste ciphertext letters or use the CHIFFRER button first.")
@@ -278,7 +277,7 @@ class HillGUI:
                 raise ValueError("No letters found in ciphertext.")
             plaintext = self.measure(lambda: hill_decrypt_blocks(inv, cipher_letters), "Decrypt Hill")
             self.result_output.delete("1.0","end")
-            self.result_output.insert("1.0", f"Ciphertext (letters): {cipher_letters}\nDecrypted: {plaintext}")
+            self.result_output.insert("1.0", f"Ciphertext : {cipher_letters}\nDecrypted: {plaintext}")
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
