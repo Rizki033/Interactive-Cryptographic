@@ -133,8 +133,9 @@ class TripleDESInterface:
         d1 = DES.new(key1, DES.MODE_ECB)
         d2 = DES.new(key2, DES.MODE_ECB)
         d3 = DES.new(key3, DES.MODE_ECB)
-        # Reverse EDE
-        return d3.decrypt(d2.encrypt(d1.decrypt(ciphertext_block)))
+        # Reverse EDE: Decrypt with K3 → Encrypt with K2 → Decrypt with K1
+        # This reverses the encryption: E(K3, D(K2, E(K1, P)))
+        return d1.decrypt(d2.encrypt(d3.decrypt(ciphertext_block)))
 
     def measure(self, func, name):
         start = time.perf_counter()

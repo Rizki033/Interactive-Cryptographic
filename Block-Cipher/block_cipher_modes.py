@@ -46,10 +46,14 @@ def decrypt_cbc(block_decrypt: Callable[[bytes], bytes], block_size: int, cipher
     return pkcs7_unpad(plaintext, block_size)
 
 # -------------------------
-# CFB Mode
+# CFB Mode (NO PADDING - Stream Cipher)
 # -------------------------
 
 def encrypt_cfb(block_encrypt: Callable[[bytes], bytes], block_size: int, plaintext: bytes, iv: bytes) -> bytes:
+    """
+    CFB mode encryption - NO PADDING required (stream cipher mode).
+    Returns ciphertext of same length as plaintext.
+    """
     ciphertext = b""
     prev_block = iv
     for i in range(0, len(plaintext), block_size):
@@ -61,6 +65,10 @@ def encrypt_cfb(block_encrypt: Callable[[bytes], bytes], block_size: int, plaint
     return ciphertext
 
 def decrypt_cfb(block_encrypt: Callable[[bytes], bytes], block_size: int, ciphertext: bytes, iv: bytes) -> bytes:
+    """
+    CFB mode decryption - NO PADDING removal (stream cipher mode).
+    Returns plaintext of same length as ciphertext.
+    """
     plaintext = b""
     prev_block = iv
     for i in range(0, len(ciphertext), block_size):
