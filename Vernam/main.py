@@ -74,6 +74,7 @@ def decrypt_file(in_path: str, out_path: str, key: bytes) -> None:
 # -------------------------
 # Known-plaintext attack demo
 # -------------------------
+
 def recover_key_from_known_plaintext(known_plaintext: bytes, ciphertext: bytes) -> bytes:
     """
     If attacker knows plaintext and has ciphertext, they can recover the key:
@@ -86,6 +87,7 @@ def recover_key_from_known_plaintext(known_plaintext: bytes, ciphertext: bytes) 
 # -------------------------
 # Utility to show bits/hex
 # -------------------------
+
 def to_hex(b: bytes) -> str:
     return b.hex()
 
@@ -124,15 +126,14 @@ def example():
     print("\nDecrypted (hex):", to_hex(recovered))
     print("Decrypted text:", recovered.decode(encoding))
 
-    # Known-plaintext attack demonstration:
-    # Suppose attacker knows `recovered` or any known plaintext-substring,
-    # they can recover the key bits for that area:
+ 
+    
     print("\n--- Known-plaintext attack demo ---")
     known = pt_bytes  # attacker knows full plaintext in this demo
     recovered_key = recover_key_from_known_plaintext(known, ct)
     print("Recovered key equals original key?", recovered_key == key)
 
-    # Show the catastrophic effect of key reuse:
+   
     print("\n--- Key reuse demonstration (never reuse key!) ---")
     # Encrypt second message with same key (WRONG)
     message2 = "ATTACK NOW"
@@ -141,8 +142,7 @@ def example():
         # pad/truncate for the demo to same length (just for demonstration)
         pt2 = pt2[:len(key)].ljust(len(key), b'X')
     ct2 = encrypt(pt2, key)
-    # An attacker who knows first plaintext and both ciphertexts can obtain pt2:
-    # Using recovered_key (from known pt1) attacker computes pt2 = ct2 XOR recovered_key
+    
     leaked_pt2 = xor_bytes(ct2, recovered_key)
     print("Original second plaintext (maybe with padding):", pt2)
     print("Recovered second plaintext by attacker (if key reused):", leaked_pt2)
