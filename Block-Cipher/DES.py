@@ -40,7 +40,7 @@ class DESInterface:
         ttk.Label(input_frame, text="Texte:").grid(row=1, column=0, sticky="nw")
         self.text_input = scrolledtext.ScrolledText(input_frame, width=60, height=5, wrap="word")
         self.text_input.grid(row=1, column=1, pady=5)
-        self.text_input.insert("1.0", "Hello! Ceci est un message secret.")
+        self.text_input.insert("1.0", "Hello This is my secret message ")
 
         # Boutons des modes
         button_frame = ttk.Frame(main_frame)
