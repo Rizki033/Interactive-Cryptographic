@@ -21,7 +21,7 @@ def decrypt_ecb(block_decrypt: Callable[[bytes], bytes], block_size: int, cipher
 
 # -------------------------
 # CBC Mode
-# -------------------------
+# ------------------------
 def encrypt_cbc(block_encrypt: Callable[[bytes], bytes], block_size: int, plaintext: bytes, iv: bytes) -> bytes:
     data = pkcs7_pad(plaintext, block_size)
     ciphertext = b""

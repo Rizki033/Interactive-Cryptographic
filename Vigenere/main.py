@@ -49,6 +49,7 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
 # -------
 # Example 
 # -------
+
 def example():
     keyword = "RELATIONS"
     plaintext = "TO BE OR NOT TO BE THAT IS THE QUESTION"
