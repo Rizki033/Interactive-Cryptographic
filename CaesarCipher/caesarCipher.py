@@ -103,23 +103,17 @@ class CaesarGUI:
       frm_table = ttk.Frame(root, padding=8)
       frm_table.pack(fill='both', expand=True)
 
-      columns = ('timestamp', 'mode', 'key', 'wall_s', 'cpu_percent', 'py_peak_bytes', 'rss_bytes')
+      columns = ('timestamp', 'mode', 'key', 'cpu_percent')
       self.tree = ttk.Treeview(frm_table, columns=columns, show='headings', height=10)
       self.tree.heading('timestamp', text='Timestamp')
       self.tree.heading('mode', text='Mode')
       self.tree.heading('key', text='Key')
-      self.tree.heading('wall_s', text='Wall(s)')
       self.tree.heading('cpu_percent', text='CPU % (approx)')
-      self.tree.heading('py_peak_bytes', text='Py Peak (bytes)')
-      self.tree.heading('rss_bytes', text='RSS (bytes)')
 
       self.tree.column('timestamp', width=140)
       self.tree.column('mode', width=80)
       self.tree.column('key', width=50, anchor='center')
-      self.tree.column('wall_s', width=80)
       self.tree.column('cpu_percent', width=110)
-      self.tree.column('py_peak_bytes', width=120)
-      self.tree.column('rss_bytes', width=120)
 
       vsb = ttk.Scrollbar(frm_table, orient="vertical", command=self.tree.yview)
       self.tree.configure(yscrollcommand=vsb.set)
@@ -160,12 +154,9 @@ class CaesarGUI:
 
         # insert row in table
         ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        wall = f"{metrics['wall_seconds']:.6f}"
         cpu_pct = f"{metrics['cpu_percent_approx']:.2f}"
-        py_peak = str(metrics['py_alloc_peak_bytes'])
-        rss = str(metrics['process_rss_bytes'])
-        self.tree.insert('', 'end', values=(ts, mode, str(key), wall, cpu_pct, py_peak, rss))
-        self.status_var.set(f"Last run: {mode} key={key}, wall={wall}s, cpu~{cpu_pct}%")
+        self.tree.insert('', 'end', values=(ts, mode, str(key), cpu_pct))
+        self.status_var.set(f"Last run: {mode} key={key}, cpu~{cpu_pct}%")
 
     def clear_table(self):
         for item in self.tree.get_children():
@@ -184,7 +175,7 @@ class CaesarGUI:
             return
         with open(fpath, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
-            writer.writerow(['timestamp','mode','key','wall_seconds','cpu_percent_approx','py_peak_bytes','rss_bytes'])
+            writer.writerow(['timestamp','mode','key','cpu_percent_approx'])
             for r in rows:
                 writer.writerow(r)
         self.status_var.set(f"Saved to {fpath}")
