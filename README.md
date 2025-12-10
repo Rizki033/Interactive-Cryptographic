@@ -1,4 +1,4 @@
-# 🔐 Interactive Cryptographic Suite with Execution-Time Profiling 
+# Interactive Cryptographic Suite with Execution-Time Profiling 
 
 A comprehensive collection of **classical and modern cryptographic algorithms** implemented in Python for educational purposes. This repository demonstrates the principles, strengths, and weaknesses of various cryptographic techniques.
 
