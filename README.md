@@ -236,49 +236,6 @@ python Stream-Cipher/RC4.py
 
 ---
 
-## ✨ Features
-
-### 🔒 Cipher Implementations
-- **Classical**: Caesar, Vigenere, Hill
-- **Block Modes**: ECB, CBC, CFB
-- **Algorithms**: DES, 3DES, AES, RC4
-- **Stream**: Vernam (OTP), RC4
-
-### 📊 Analysis & Visualization
-- Performance measurement (execution time, CPU usage, memory)
-- Real-time graphing with matplotlib
-- Statistical analysis of cipher operations
-- Brute-force attack demonstrations
-
-### 🎨 User Interfaces
-- Tkinter-based GUI for interactive testing
-- Command-line interfaces for scripting
-- Real-time result visualization
-- CSV export functionality
-
-### 📚 Educational Content
-- Comprehensive documentation
-- ASCII art headers for visual appeal
-- Detailed code comments
-- Example usage demonstrations
-
----
-
-## 🛠️ Key Algorithms
-
-| Algorithm | Type | Key Size | Block Size | Security |
-|-----------|------|----------|-----------|----------|
-| Caesar | Classical | Variable | - | ❌ Weak |
-| Vigenere | Classical | Variable | - | ❌ Weak |
-| Hill | Classical | Variable | - | ❌ Weak |
-| DES | Block | 56 bits | 64 bits | ⚠️ Deprecated |
-| 3DES | Block | 168 bits | 64 bits | ⚠️ Legacy |
-| AES | Block | 128/192/256 | 128 bits | ✅ Strong |
-| RC4 | Stream | Variable | - | ⚠️ Flawed |
-| Vernam | Stream | =Plaintext | - | ✅ Perfect |
-
----
-
 ## 🔍 Security Considerations
 
 ### Good Practices Demonstrated
