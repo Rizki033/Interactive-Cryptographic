@@ -281,19 +281,19 @@ python Stream-Cipher/RC4.py
 
 ## 🔍 Security Considerations
 
-### ✅ Good Practices Demonstrated
+### Good Practices Demonstrated
 - PKCS#7 padding for block ciphers
 - Random IV generation
 - Proper mode usage (CBC, CFB > ECB)
 - Cryptographically secure RNG
 
-### ⚠️ Vulnerabilities Explored
+### Vulnerabilities Explored
 - ECB mode pattern leakage
 - Key reuse in stream ciphers
 - Known-plaintext attacks
 - Brute-force susceptibility
 
-### ❌ What NOT to Do
+### What NOT to Do
 - **Don't use classical ciphers** for real data
 - **Don't reuse keys** in stream ciphers
 - **Don't use ECB mode** for sensitive data
@@ -365,7 +365,7 @@ All implementations include:
 
 ---
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 The GUI applications measure:
 - **Execution Time**: Wall-clock time in milliseconds
@@ -377,46 +377,6 @@ Results can be exported to CSV for analysis.
 
 ---
 
-## 🔄 Git Management
-
-This project uses a proper Git workflow:
-```bash
-# View changes
-git status
-git diff
-
-# Commit changes
-git add .
-git commit -m "Descriptive message"
-
-# Push to remote
-git push origin main
-
-# See history
-git log --oneline
-```
-
-### .gitignore Configuration
-Protected items:
-- Python cache (`__pycache__/`, `*.pyc`)
-- Virtual environment (`.venv/`)
-- IDE files (`.vscode/`, `.idea/`)
-- OS files (`.DS_Store`, `Thumbs.db`)
-- Credentials and secrets (`.env`, `*.key`, `*.pem`)
-
----
-
-## 📝 Code Quality
-
-All code includes:
-- ✅ Type hints for better readability
-- ✅ Docstring documentation
-- ✅ Meaningful variable names
-- ✅ Consistent formatting
-- ✅ Error handling
-- ✅ Input validation
-
----
 
 ## 🎓 Learning Path
 
@@ -430,7 +390,7 @@ Suggested order for learning:
 
 ---
 
-## 📚 References
+## References
 
 - [PyCryptodome Documentation](https://pycryptodome.readthedocs.io/)
 - [NIST Cryptographic Algorithms](https://csrc.nist.gov/)
@@ -438,64 +398,7 @@ Suggested order for learning:
 - [Block Cipher Modes](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
 
 ---
-
-## 👨‍💻 Author
-
-**Rizki033** - Educational Cryptography Project
-
----
-
-## 📄 License
-
-This project is provided **for educational purposes only**. 
-
-⚠️ **Important**: 
-- Do not use this code for real cryptographic applications
-- Always use well-tested, production-grade cryptographic libraries
-- This code is NOT suitable for protecting sensitive information
-
----
-
-## 🤝 Contributing
-
-This is an educational repository. Feel free to:
-- ✅ Fork and study the code
-- ✅ Submit issues for bugs
-- ✅ Suggest improvements
-- ✅ Add new cipher implementations
-
----
-
-## ✅ Checklist for Users
-
-Before using this code:
-- [ ] I understand this is for **educational purposes only**
-- [ ] I will NOT use this in production
-- [ ] I will use `cryptography` library for real needs
-- [ ] I have read the security considerations
-- [ ] I understand the vulnerabilities demonstrated
-
----
-
-## 📞 Support
-
-For questions or issues:
-1. Check existing documentation in subdirectory READMEs
-2. Review code comments and docstrings
-3. Run example demonstrations
-4. Consult references provided
-
----
-
-**Last Updated:** December 9, 2025
-
-**Status:** ✅ Actively Maintained
-
-**Python Version:** 3.8+
-
----
-
-## 🎯 Quick Start
+## Quick Start
 
 ```bash
 # Clone repository
